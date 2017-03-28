@@ -1,0 +1,48 @@
+<button (click)="printable = !printable">Toggle message</button>
+
+<h2 *ngIf="printable">{{ message }}</h2>
+<p>Contact List Data {{ printable }}</p>
+
+
+<div *ngIf="contacts">
+  <div *ngFor="let contact of contacts">
+    <h3 class="td-username" [style.color]="colorH3">
+      {{ contact.name }}
+    </h3>
+    <div>
+      <img class="tp-avatar" *ngIf="contact.avatar?.url" width="150px" [src]="contact.avatar.url" alt="Avatar of {{ contact.name }}">
+    </div>
+  </div>
+</div>
+
+<div>
+  <button (click)="changeTab(1)">Tab 1</button>
+  <button (click)="changeTab(2)">Tab 2</button>
+  <button (click)="changeTab(3)">Tab 3</button>
+</div>
+<div [ngSwitch]="tabIndex">
+  <template [ngSwitchCase]="1">
+    <div>
+      Tab Content 1
+    </div>
+    <p>
+      Tao là trùm
+    </p>
+  </template>
+  <template [ngSwitchCase]="2">
+    <div>
+      Tab Content 2
+    </div>
+    <p>
+      Tao là gà
+    </p>
+  </template>
+  <template [ngSwitchCase]="3">
+    <div>
+      Tab Content 3
+    </div>
+    <p>
+      Tao bình thường
+    </p>
+  </template>
+</div>
